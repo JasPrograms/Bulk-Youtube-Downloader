@@ -1,0 +1,126 @@
+/*
+A professional, dark theme with a clean, modern aesthetic.
+Uses a refined grayscale palette with a vibrant blue accent
+for a sleek and elegant look.
+*/
+QWidget {
+background-color: #1a1a1a;
+color: #f0f0f0;
+font-family: "Segoe UI", "Helvetica", sans-serif;
+font-size: 14px;
+}
+
+/* Main window and container styling */
+QMainWindow, QWidget {
+background-color: #212121;
+border: none;
+}
+
+/* PushButtons */
+QPushButton {
+background-color: #2e2e2e;
+border: 1px solid #444444;
+border-radius: 8px;
+padding: 10px 20px;
+color: #f0f0f0;
+font-weight: bold;
+}
+
+QPushButton:hover {
+background-color: #383838;
+}
+
+QPushButton:pressed {
+background-color: #1e1e1e;
+border: 1px solid #007bff;
+}
+
+QPushButton:disabled {
+background-color: #252525;
+border: 1px solid #333333;
+color: #777777;
+}
+
+/* LineEdit and ComboBox */
+QLineEdit, QComboBox {
+background-color: #2e2e2e;
+border: 1px solid #444444;
+border-radius: 8px;
+padding: 8px;
+color: #f0f0f0;
+}
+
+QLineEdit:focus, QComboBox:focus {
+border: 1px solid #007bff;
+}
+
+QComboBox::drop-down {
+border: none;
+width: 25px;
+}
+
+QComboBox::down-arrow {
+image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23007bff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.618a.5.5 0 0 1 .44-.888h9.638a.5.5 0 0 1 .44.888L8.753 11.14a.5.5 0 0 1-.723 0z'/%3E%3C/svg%3E");
+width: 12px;
+height: 12px;
+}
+
+/* TableWidget and related components */
+QTableWidget {
+background-color: #212121;
+border: 1px solid #444444;
+gridline-color: #444444;
+border-radius: 8px;
+}
+
+QTableWidget::item {
+padding: 8px;
+background-color: #2e2e2e;
+border-bottom: 1px solid #444444;
+}
+
+QHeaderView::section {
+background-color: #383838;
+padding: 8px;
+border: 1px solid #444444;
+color: #f0f0f0;
+font-weight: bold;
+}
+
+QTableWidget QScrollBar:vertical, QTableWidget QScrollBar:horizontal {
+background-color: #212121;
+border: none;
+}
+
+/* GroupBox styling */
+QGroupBox {
+border: 1px solid #444444;
+border-radius: 8px;
+margin-top: 1.5em;
+padding-top: 1em;
+}
+
+QGroupBox::title {
+subcontrol-origin: margin;
+subcontrol-position: top left;
+left: 10px;
+padding: 0 5px;
+color: #007bff;
+font-weight: bold;
+}
+
+/* ProgressBar styling */
+QProgressBar {
+border: 1px solid #444444;
+border-radius: 5px;
+background-color: #2e2e2e;
+text-align: center;
+color: #f0f0f0;
+height: 20px;
+}
+
+QProgressBar::chunk {
+background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,
+stop: 0 #007bff, stop: 1 #0099ff);
+border-radius: 5px;
+}
