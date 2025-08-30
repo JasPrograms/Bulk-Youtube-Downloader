@@ -137,20 +137,16 @@ class Main(QtWidgets.QMainWindow):
         if not url: return
         r = self.table.rowCount(); self.table.insertRow(r)
         
-        # Add URL and a placeholder for the title
         self.table.setItem(r, 0, QtWidgets.QTableWidgetItem(url))
         self.table.setItem(r, 1, QtWidgets.QTableWidgetItem(""))
         
-        # Add the current date and time
         self.table.setItem(r, 2, QtWidgets.QTableWidgetItem(datetime.now().strftime("%m/%d/%Y %I:%M:%S %p")))
 
-        # Add a QProgressBar for the progress column
         progress_bar = QtWidgets.QProgressBar()
         progress_bar.setValue(0)
         progress_bar.setTextVisible(True)
         self.table.setCellWidget(r, 3, progress_bar)
         
-        # Add a placeholder for the status
         self.table.setItem(r, 4, QtWidgets.QTableWidgetItem("Queued"))
 
         self.url_input.clear()
@@ -175,20 +171,15 @@ class Main(QtWidgets.QMainWindow):
         max_res_val = None if max_res_text=="No cap" else int(max_res_text)
         merge_fmt = "mkv" if self.format_combo.currentIndex()==0 else "mp4"
 
-        # Important bits that avoid 403/nsig throttling where possible
         ydl_opts = {
             "format": build_format(max_res_val),
             "merge_output_format": merge_fmt,
             "outtmpl": {"default": str(outdir/"%(title)s [%(id)s].%(ext)s")},
             "quiet": True,
             "geo_bypass": True,
-            # Prefer Android player API which often avoids nsig throttling
             "extractor_args": {"youtube": {"player_client": ["android"]}},
-            # Set a normal UA just in case
             "http_headers": {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"},
-            # Smaller chunks can also reduce flakey 403s on some networks
-            "http_chunk_size": 10 * 1024 * 1024,  # 10MB
-            # Robustness
+            "http_chunk_size": 10 * 1024 * 1024,  
             "retries": 10,
             "fragment_retries": 10,
             "continuedl": True,
